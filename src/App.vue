@@ -11,6 +11,7 @@
               You have finish all the question.
               {{ numCorrect }} right!
             </p>
+            <b-button variant="primary" @click="reset">Try again?</b-button>
             <hr />
             <p class="mb-0" v-if="numCorrect > 7">
               Congratulation!
@@ -25,6 +26,7 @@
             :quest="question[index]"
             :next="next"
             :increment="increment"
+            :numTotal="numTotal"
           />
         </b-col>
       </b-row>
@@ -61,6 +63,9 @@ export default {
         this.numCorrect++;
       }
       this.numTotal++;
+    },
+    reset: function() {
+      location.reload();
     },
   },
   mounted: function() {

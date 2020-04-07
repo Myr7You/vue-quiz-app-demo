@@ -2,19 +2,19 @@
   <div class="question-box-container">
     <b-jumbotron>
       <template v-slot:lead>
-        <b> {{ quest.question }}</b>
+        <h3 v-html="quest.question"></h3>
       </template>
 
       <hr class="my-4" />
       <b-list-group>
         <b-list-group-item
-          v-for="(answer, index) in answers"
+          v-for="(answer, index) in shuffledAnswers"
           :key="index"
           @click="selectAns(index)"
           :class="ansClass(index)"
           :disabled="answered"
+          v-html="answer"
         >
-          {{ answer }}
         </b-list-group-item>
       </b-list-group>
       <b-button
@@ -25,7 +25,7 @@
       >
       <b-button
         variant="success"
-        :disabled="selectedIndex === null || !answered"
+        :disabled="selectedIndex === null || !answered || numTotal === 10"
         @click="next"
         >Next</b-button
       >
@@ -38,6 +38,7 @@ import _ from "lodash";
 export default {
   props: {
     quest: Object,
+    numTotal: Number,
     next: Function,
     increment: Function,
   },
@@ -62,6 +63,7 @@ export default {
       immediate: true,
       handler() {
         this.selectedIndex = null;
+        this.correctIndex = null;
         this.answered = false;
         this.shuffleAnswers();
       },
