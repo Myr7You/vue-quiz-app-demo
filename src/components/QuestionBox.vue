@@ -126,20 +126,29 @@ export default {
 .list-group {
   margin-bottom: 15px;
 }
+.list-group-item {
+  color: #666;
+}
 .list-group-item:hover {
-  background-color: #eeeeee;
+  background-color: #cce5ff;
   cursor: pointer;
+  font-weight: bold;
 }
 .btn {
   margin: 0 5px;
 }
 .selected {
-  background-color: cadetblue;
+  background-color: #cce5ff;
+  font-weight: bold;
 }
 .correct {
-  background-color: chartreuse;
+  background-color: #28a745;
+  color: #fff;
+  font-weight: bold;
 }
 .incorrect {
-  background-color: crimson;
+  background-color: #f8d7da;
+  color: #dc3545;
+  font-weight: bold;
 }
 </style>
